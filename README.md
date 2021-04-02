@@ -1,6 +1,7 @@
 #============================
 
 INSTALL DOCKER : START
+
 #============================
 
 #--Check Kernel version
@@ -50,11 +51,13 @@ Reboot OS
 #============================
 
 INSTALL DOCKER : DONE!
+
 #============================
 
 #============================
 
 DOCKER BUILD CNODE : START!
+
 #============================
 
 #---- STEP1 ----
@@ -84,6 +87,7 @@ docker build --force-rm --build-arg=NONEROOTUSER=vnpip -t vnpip/cnode:stage3.1 -
 #============================
 
 DOCKER BUILD CNODE : DONE! 
+
 #============================
 
 **Tag IMAGE**
