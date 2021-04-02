@@ -1,4 +1,5 @@
 #============================
+
 INSTALL DOCKER : START
 #============================
 
@@ -45,13 +46,17 @@ sudo groupadd docker
 sudo usermod -aG docker USER
 
 Reboot OS
+
 #============================
+
 INSTALL DOCKER : DONE!
 #============================
 
 #============================
+
 DOCKER BUILD CNODE : START!
 #============================
+
 #---- STEP1 ----
 
 docker pull cardanocommunity/cardano-node:stage1
@@ -77,6 +82,7 @@ docker build --force-rm -t vnpip/cnode:stage3.1 -f dockerfile_stage3 .
 docker build --force-rm --build-arg=NONEROOTUSER=vnpip -t vnpip/cnode:stage3.1 -f dockerfile_stage3 .
 
 #============================
+
 DOCKER BUILD CNODE : DONE! 
 #============================
 
