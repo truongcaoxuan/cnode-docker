@@ -49,8 +49,9 @@ sudo docker run hello-world
 #--Set User docker sudo
 
 sudo groupadd docker
-sudo usermod -aG docker truongcx263
+sudo usermod -aG docker USER
 
+# Reboot OS
 #============================
 # INSTALL DOCKER DONE!
 #============================
