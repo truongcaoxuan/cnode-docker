@@ -96,15 +96,15 @@ docker tag IMAGE vnpips/cnode:stage3.0
 
 #---- TESTING ----
 
-docker run -ti --rm -p 6000:6000 -p 12798:12798 -p 9100:9100 --name vnpip-cnode-relay vnpip/cnode:stage3.0
+docker run -ti --rm -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay1 vnpip/cnode:stage3.0
 
-docker run -ti --rm -p 6000:6000 -p 12798:12798 -p 9100:9100 --name vnpip-cnode-relay vnpip/cnode:stage3.1
+docker run -ti --rm -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay1 vnpip/cnode:stage3.1
 
-docker run -ti –privileged --rm -p 6000:6000 -p 12798:12798 -p 9100:9100 --name vnpip-cnode-relay vnpip/cnode:stage3.0
+docker run -ti –privileged --rm -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay1 vnpip/cnode:stage3.0
 
 #---- RUNNING ----
 
-docker run -dti --privileged -p 6000:6000 -p 12798:12798 -p 9100:9100 --name vnpip-cnode-relay vnpip/cnode:stage3.0
+docker run -dti --privileged -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay1 vnpip/cnode:stage3.0
 
 docker images
 
