@@ -1,8 +1,8 @@
 #PREREQ :: INSTALL DOCKER
 
-Option1: manual install docker step by step in docker-install-guide-manual.txt
+Option1: manual install docker step by step in **docker-install-guide-manual.txt**
 
-Option 2: automatic installl docker by run docker-install.sh
+Option 2: automatic installl docker by run **docker-install.sh**
 
 NEXT STEP >>
 
