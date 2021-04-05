@@ -8,21 +8,21 @@ NEXT STEP >>
 
 #============================
 
-DOCKER BUILD CNODE : START!
+# DOCKER BUILD CNODE : START!
 
 #============================
 
-#---- STEP1 ----
+**---- STEP1 ----**
 
 docker pull cardanocommunity/cardano-node:stage1
 
-#---- STEP2 ----
+**---- STEP2 ----**
 
 docker build --force-rm -t vnpip/cnode:stage2 -f dockerfile_stage2 .
 
 #docker tag IMAGE vnpip/cnode:stage2
 
-#---- STEP3 ----
+**---- STEP3 ----**
 
 **Build IMAGE have no db**
 
@@ -79,11 +79,27 @@ docker exec -ti CONTAINER /bin/bash
 docker attach CONTAINER
 
 # -- Container operate
-tmux a
-
-Ctrl-B / D
+**Exit container**
 
 Ctrl-P /Ctrl-Q
+
+**Start / Stop cnode**
+
+cd ..
+
+cd .scripts
+
+./start_all
+
+./stop_all
+
+**crontab**
+
+crontab -e
+
+**gLiveView**
+
+gLiveView
 
 # --- PUSH IMAGE TO DOCKER HUB ---
 
