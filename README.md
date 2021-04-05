@@ -108,39 +108,37 @@ docker tag IMAGE vnpips/cnode:stage3.0
 
 #---- TESTING ----
 
-docker run -ti --rm \
--p 6000:6000 -p 12798:12798 -p 9100:9100 \
---name relay1 vnpip/cnode:stage3.0
+docker run -ti --rm -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay1 vnpip/cnode:stage3.0
 
-docker run -ti --rm \
--p 6000:6000 -p 12798:12798 -p 9100:9100 \
---name relay1 vnpip/cnode:stage3.1
+docker run -ti --rm -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay1 vnpip/cnode:stage3.1
 
-docker run -ti –privileged --rm \
--p 6000:6000 -p 12798:12798 -p 9100:9100 \
---name relay1 vnpip/cnode:stage3.0
+docker run -ti –privileged --rm -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay1 vnpip/cnode:stage3.0
 
 #---- RUNNING ----
 
 docker network create cardano-mainnet
 
-docker run -dti --privileged --network=cardano-mainnet \
--p 6000:6000 -p 12798:12798 -p 9100:9100 \
---name relay1 vnpip/cnode:stage3.0
+docker run -dti --privileged --network=cardano-mainnet -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay1 vnpip/cnode:stage3.0
 
-docker run -dti --security-opt=no-new-privileges --network=cardano-mainnet \
--p 6000:6000 -p 12798:12798 -p 9100:9100 \
---name relay1 vnpip/cnode:stage3.0
+docker run -dti --security-opt=no-new-privileges --network=cardano-mainnet -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay1 vnpip/cnode:stage3.0
 
+# Check Docker Images
 
 docker images
 
+# Check Docker Container
+
 docker ps
+
+docker ps -a
+
+# Docker container exec / attach
 
 docker exec -ti CONTAINER /bin/bash
 
 docker attach CONTAINER
 
+#-- Container operate
 tmux a
 
 Ctrl-B / D
