@@ -6,6 +6,10 @@ Option 2: automatic installl docker by run docker-install.sh
 
 NEXT STEP >>
 
+**CLONE CNODE DOCKER BUILD**
+
+git clone https://github.com/truongcaoxuan/cnode-docker.git
+
 #============================
 
 # DOCKER BUILD CNODE : START!
