@@ -131,6 +131,7 @@ RUN sudo chown -R $NONEROOTUSER:$NONEROOTUSER $CNODE_HOME/* \
     && sudo chown -R $NONEROOTUSER:$NONEROOTUSER /home/$NONEROOTUSER/.* \
     && sudo chmod a+x /home/$NONEROOTUSER/.scripts/*.sh /home/$NONEROOTUSER/entrypoint.sh
 
+# UPDATE DB
 #RUN cd /opt/cardano/cnode \
 #    && sudo /home/$NONEROOTUSER/.scripts/downG.sh 1Jyuh8tw7A4SVEP96TpdCV_HpR9ZUdZpC db_252.zip \
 #    && unzip db_252.zip \
@@ -139,5 +140,4 @@ RUN sudo chown -R $NONEROOTUSER:$NONEROOTUSER $CNODE_HOME/* \
 # Expose NODE_PORT - Node Exporter - EKG-prometheus monitoring ports
 EXPOSE 6000 9100 12798 
 
-#CMD ["sudo /etc/init.d/cron start"]
 ENTRYPOINT ["./entrypoint.sh"]
