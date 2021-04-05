@@ -66,9 +66,7 @@ docker pull cardanocommunity/cardano-node:stage1
 
 #---- STEP2 ----
 
-docker build --force-rm \
--t vnpip/cnode:stage2 \
--f dockerfile_stage2 .
+docker build --force-rm -t vnpip/cnode:stage2 -f dockerfile_stage2 .
 
 #docker tag IMAGE vnpip/cnode:stage2
 
@@ -76,25 +74,15 @@ docker build --force-rm \
 
 **Build IMAGE have no db**
 
-docker build --force-rm \
--t vnpip/cnode:stage3.0 \
--f dockerfile_stage3 .
+docker build --force-rm -t vnpip/cnode:stage3.0 -f dockerfile_stage3 .
 
-docker build --force-rm \
---build-arg=NONEROOTUSER=vnpip \
--t vnpip/cnode:stage3.0 \
--f dockerfile_stage3 .
+docker build --force-rm --build-arg=NONEROOTUSER=vnpip -t vnpip/cnode:stage3.0 -f dockerfile_stage3 .
 
 **Build IMAGE with db**
 
-docker build --force-rm \
--t vnpip/cnode:stage3.1 \
--f dockerfile_stage3 .
+docker build --force-rm -t vnpip/cnode:stage3.1 -f dockerfile_stage3 .
 
-docker build --force-rm \
---build-arg=NONEROOTUSER=vnpip \
--t vnpip/cnode:stage3.1 \
--f dockerfile_stage3 .
+docker build --force-rm --build-arg=NONEROOTUSER=vnpip -t vnpip/cnode:stage3.1 -f dockerfile_stage3 .
 
 #============================
 
