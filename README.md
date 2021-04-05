@@ -78,14 +78,14 @@ docker exec -ti CONTAINER /bin/bash
 
 docker attach CONTAINER
 
-#-- Container operate
+# -- Container operate
 tmux a
 
 Ctrl-B / D
 
 Ctrl-P /Ctrl-Q
 
-# --- DOCKER HUB ---
+# --- PUSH IMAGE TO DOCKER HUB ---
 
 docker login -u USER -p PASSWORD
 
@@ -106,11 +106,13 @@ docker push truongcx/cnode:stage3.0
 
 docker push truongcx/cnode:stage3.1
 
-#Source ref 
+# Source Docker Hub
 
 https://hub.docker.com/r/truongcx/cnode
 
 https://hub.docker.com/r/cardanocommunity/cardano-node
+
+# Source Dockerfile
 
 https://github.com/cardano-community/guild-operators/tree/fa29ea533c33b1b561cd3faeb60fa03255f7b43b/files/docker/node
 
