@@ -101,6 +101,8 @@ RUN sudo curl -sL https://nixos.org/nix/install | sh \
     && sudo crontab -u $NONEROOTUSER /etc/cron.d/cronjob \
     && echo "alias cntools=$CNODE_HOME/scripts/cntools.sh" >> ~/.bashrc \
     && echo "alias gLiveView=$CNODE_HOME/scripts/gLiveView.sh" >> ~/.bashrc \
+    && echo "alias nodestart=/home/vnpip/.scripts/start_all.sh" >> ~/.bashrc \
+    && echo "alias nodestop=/home/vnpip/.scripts/stop_all.sh" >> ~/.bashrc \
     && echo "export PATH=/nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/bin:/nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/sbin:/opt/cardano/cnode/scripts:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/home/$NONEROOTUSER/.cabal/bin"  >> ~/.bashrc
 
 # INSTALL DEPS  
