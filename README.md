@@ -56,13 +56,13 @@ DOCKER BUILD CNODE : DONE!
 
 docker tag IMAGE vnpips/cnode:stage3.0
 
-#---- TESTING ----
+**TESTING**
 
 docker network create cardano-mainnet
 
 docker run -ti –privileged --rm --network=cardano-mainnet -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay1 vnpip/cnode:stage3.0
 
-#---- RUNNING ----
+**RUNNING**
 
 docker network create cardano-mainnet
 
@@ -92,13 +92,9 @@ Ctrl-P /Ctrl-Q
 
 **Start / Stop cnode**
 
-cd ..
+nodestart
 
-cd .scripts
-
-./start_all
-
-./stop_all
+nodestop
 
 **crontab**
 
