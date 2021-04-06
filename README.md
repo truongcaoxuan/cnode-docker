@@ -69,23 +69,24 @@ docker network create cardano-mainnet
 docker run -dti --privileged --network=cardano-mainnet -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay1 vnpip/cnode:stage3.0
 
 
-# Check Docker Images
+# Docker Images
 
 docker images
 
-# Check Docker Container
+docker rmi IMAGES
+
+# Docker Container
 
 docker ps
 
 docker ps -a
 
-# Docker container exec / attach
+docker rm CONTAINER
 
 docker exec -ti CONTAINER /bin/bash
 
 docker attach CONTAINER
 
-# -- Container operate
 **Exit container**
 
 Ctrl-P /Ctrl-Q
@@ -108,6 +109,8 @@ gLiveView
 
 docker login -u USER -p PASSWORD
 
+**Tag Build Images to Docker Hub Tag**
+
 docker tag cardanocommunity/cardano-node:stage1 truongcx/cnode:stage1
 
 docker tag vnpip/cnode:stage2 truongcx/cnode:stage2
@@ -116,6 +119,7 @@ docker tag vnpip/cnode:stage3.0 truongcx/cnode:stage3.0
 
 docker tag vnpip/cnode:stage3.1 truongcx/cnode:stage3.1
 
+**Push Images to Docker Hub**
 
 docker push truongcx/cnode:stage1
 
