@@ -33,7 +33,7 @@ sudo /usr/sbin/inetd start > /dev/null 2>&1
 find /opt/cardano/cnode -name "*config*.json" -print0 | xargs -0 sed -i 's/127.0.0.1/0.0.0.0/g' 2> /dev/null 
 
 # run node
-/home/vnpip/.scripts/start_all.sh
+~/.scripts/start_all.sh
 
 # set TraceMempool false
 #find /opt/cardano/cnode -name "*config*.json" -print0 | xargs -0 sed -i 's/\"TraceMempool\": true/\"TraceMempool\": false/g' 2> /dev/null 
