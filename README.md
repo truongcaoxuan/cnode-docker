@@ -8,6 +8,12 @@ NEXT STEP >>
 
 **CLONE CNODE DOCKER BUILD**
 
+#* update git to automatically set line ending to LF
+
+git config --global core.eol lf
+
+git config --global core.autocrlf input
+
 git clone https://github.com/truongcaoxuan/cnode-docker.git
 
 #============================
