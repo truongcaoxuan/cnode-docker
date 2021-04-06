@@ -16,11 +16,11 @@ git config --global core.autocrlf input
 
 git clone https://github.com/truongcaoxuan/cnode-docker.git
 
-#============================
+#============================================================
 
 # DOCKER BUILD CNODE : START!
 
-#============================
+#============================================================
 
 **---- STEP1 ----**
 
@@ -46,36 +46,36 @@ docker build --force-rm -t vnpip/cnode:stage3.1 -f dockerfile_stage3 .
 
 docker build --force-rm --build-arg=NONEROOTUSER=vnpip -t vnpip/cnode:stage3.1 -f dockerfile_stage3 .
 
-#============================
+#============================================================
 
 DOCKER BUILD CNODE : DONE! 
 
-#============================
+#============================================================
 
-**Tag IMAGE**
+**--Tag IMAGE**
 
 docker tag IMAGE vnpips/cnode:stage3.0
 
-**TESTING**
+**RUNNING TEST CONTAINER**
 
 docker network create cardano-mainnet
 
 docker run -ti –privileged --rm --network=cardano-mainnet -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay1 vnpip/cnode:stage3.0
 
-**RUNNING**
+**RUNNING CONTAINER**
 
 docker network create cardano-mainnet
 
 docker run -dti --privileged --network=cardano-mainnet -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay1 vnpip/cnode:stage3.0
 
 
-# Docker Images
+# --Docker Images
 
 docker images
 
 docker rmi IMAGES
 
-# Docker Container
+# --Docker Container
 
 docker ps
 
@@ -87,21 +87,21 @@ docker exec -ti CONTAINER /bin/bash
 
 docker attach CONTAINER
 
-**Exit container**
+**--Exit container**
 
 Ctrl-P /Ctrl-Q
 
-**Start / Stop cnode**
+**--Start / Stop cnode**
 
 nodestart
 
 nodestop
 
-**crontab**
+**--crontab setting**
 
 crontab -e
 
-**gLiveView**
+**--run gLiveView**
 
 gLiveView
 
@@ -109,7 +109,7 @@ gLiveView
 
 docker login -u USER -p PASSWORD
 
-**Tag Build Images to Docker Hub Tag**
+**--Tag Build Images to Docker Hub Tag**
 
 docker tag cardanocommunity/cardano-node:stage1 truongcx/cnode:stage1
 
@@ -119,7 +119,7 @@ docker tag vnpip/cnode:stage3.0 truongcx/cnode:stage3.0
 
 docker tag vnpip/cnode:stage3.1 truongcx/cnode:stage3.1
 
-**Push Images to Docker Hub**
+**--Push Images to Docker Hub**
 
 docker push truongcx/cnode:stage1
 
@@ -129,7 +129,7 @@ docker push truongcx/cnode:stage3.0
 
 docker push truongcx/cnode:stage3.1
 
-# Source Docker Hub
+# --Source Docker Hub
 
 https://hub.docker.com/r/truongcx/cnode
 
@@ -137,7 +137,7 @@ https://hub.docker.com/r/cardanocommunity/cardano-node
 
 https://hub.docker.com/r/inputoutput/cardano-node
 
-# Source Dockerfile
+# --Source Dockerfile
 
 https://github.com/cardano-community/guild-operators/tree/fa29ea533c33b1b561cd3faeb60fa03255f7b43b/files/docker/node
 
