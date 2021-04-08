@@ -20,6 +20,18 @@ PATH=/nix/var/nix/profiles/per-user/guild/profile/bin:/nix/var/nix/profiles/per-
 #52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
 MAILTO=""
 #*/130 * * * * find /opt/cardano/cnode/logs/  -name "*.json" -type f -mtime +0 -type f -delete
+#
 */35 * * * * history -c
+#5 * * * *   ~/.scripts/cleanCaches.sh
+#5 * * * *   ~/..scripts/clearlogs.sh
+
 #5 * * * *   /opt/cardano/cnode/scripts/topologyUpdater.sh
+#
+#5 * * * *   ~/..scripts/memory_alert.sh
+#5 * * * *   ~/..scripts/peerIN_check.sh
+#
+#5 * * * *   ~/.scripts/.scripts/downG.sh
+#5 * * * *   ~/.scripts/.scripts/start_all.sh
+#5 * * * *   ~/.scripts/.scripts/stop_all.sh
+#
 # Empty
