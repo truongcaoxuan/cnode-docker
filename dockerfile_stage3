@@ -127,6 +127,10 @@ ADD addfile/banner.txt /home/$NONEROOTUSER/.scripts/
 ADD addfile/downG.sh /home/$NONEROOTUSER/.scripts/
 ADD addfile/start_all.sh /home/$NONEROOTUSER/.scripts/
 ADD addfile/stop_all.sh /home/$NONEROOTUSER/.scripts/
+ADD addfile/cleanCaches.sh /home/$NONEROOTUSER/.scripts/
+ADD addfile/clearlogs.sh /home/$NONEROOTUSER/.scripts/
+ADD addfile/memory_alert.sh /home/$NONEROOTUSER/.scripts/
+ADD addfile/peerIN_check.sh /home/$NONEROOTUSER/.scripts/
 ADD addfile/entrypoint.sh ./
 
 RUN sudo chown -R $NONEROOTUSER:$NONEROOTUSER $CNODE_HOME/* \
