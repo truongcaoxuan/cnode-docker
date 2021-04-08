@@ -19,20 +19,41 @@ PATH=/nix/var/nix/profiles/per-user/guild/profile/bin:/nix/var/nix/profiles/per-
 #47 6    * * 7   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
 #52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
 MAILTO=""
-#*/130 * * * * find /opt/cardano/cnode/logs/  -name "*.json" -type f -mtime +0 -type f -delete
 #
-*/35 * * * * history -c
-#5 * * * *   ~/.scripts/cleanCaches.sh
-#5 * * * *   ~/..scripts/clearlogs.sh
-
+#== WEKKLY ===
+#--: At 00:10 on Monday
+10 0 * * 1    sudo apt-get update -y
+#--: At 00:20 on Monday
+20 0 * * 1   sudo apt-get upgrade -y
+#--: At 00:30 on Monday
+30 0 * * 1   sudo apt autoremove
+#--: At 00:40 on Monday
+40 0 * * 1   sudo apt-get clean
+#
+#=== REBOOT ===#
+#@reboot sleep 5 && sudo ~/.scripts/.scripts/reboot_cli.sh
+#@reboot ~/.scripts/.scripts/start_all.sh
+#--: Delete iptables on startup
+@reboot sleep 15 && sudo /usr/sbin/iptables -F
+#
+#=== DAILY ===
+#22 5 * * *   ~/.scripts/cleanCaches.sh
+#11 5 * * *   ~/..scripts/clearlogs.sh
+#=== HOURLY ===
 #5 * * * *   /opt/cardano/cnode/scripts/topologyUpdater.sh
-#5 * * * *   /opt/cardano/cnode/scripts/poolstatsUpdater.sh
-#
-#5 * * * *   ~/..scripts/memory_alert.sh
-#5 * * * *   ~/..scripts/peerIN_check.sh
+#10 * * * *   /opt/cardano/cnode/scripts/poolstatsUpdater.sh
+#=== EVERY MINUTES ===
+#*/130 * * * * find /opt/cardano/cnode/logs/  -name "*.json" -type f -mtime +0 -type f -delete
+*/35 * * * * history -c
+#*/55 * * * *   ~/..scripts/memory_alert.sh
+#*/20 * * * *   ~/..scripts/peerIN_check.sh
 #
 #5 * * * *   ~/.scripts/.scripts/downG.sh
 #5 * * * *   ~/.scripts/.scripts/start_all.sh
 #5 * * * *   ~/.scripts/.scripts/stop_all.sh
+#
+#=== EVERY HOURS ===
+#--:Every 24th hour :At minute 10: Delete all iptable rule chain
+#10 */24 * * * sudo /usr/sbin/iptables -F
 #
 # Empty
