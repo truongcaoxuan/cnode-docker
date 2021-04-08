@@ -26,6 +26,7 @@ MAILTO=""
 #5 * * * *   ~/..scripts/clearlogs.sh
 
 #5 * * * *   /opt/cardano/cnode/scripts/topologyUpdater.sh
+#5 * * * *   /opt/cardano/cnode/scripts/poolstatsUpdater.sh
 #
 #5 * * * *   ~/..scripts/memory_alert.sh
 #5 * * * *   ~/..scripts/peerIN_check.sh
