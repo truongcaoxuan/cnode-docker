@@ -70,13 +70,13 @@ ENV \
 RUN mkdir -p /home/$NONEROOTUSER/.cabal/bin
 
 # COPY NODE BINS AND DEPS 
-COPY --from=vnpip/cnode:stage2 /root/.cabal/bin/* /home/$NONEROOTUSER/.cabal/bin/
-COPY --from=vnpip/cnode:stage2 /lib/x86_64-linux-gnu/lib* /lib/x86_64-linux-gnu/
-COPY --from=vnpip/cnode:stage2 /lib64/ld-linux-x86-64* /lib64/
-COPY --from=vnpip/cnode:stage2 /usr/lib/x86_64-linux-gnu/libgmp.* /usr/lib/x86_64-linux-gnu/
-COPY --from=vnpip/cnode:stage2 /usr/lib/x86_64-linux-gnu/liblz4.* /usr/lib/x86_64-linux-gnu/
-COPY --from=vnpip/cnode:stage2 /usr/lib/x86_64-linux-gnu/libsodium.* /usr/lib/x86_64-linux-gnu/
-COPY --from=vnpip/cnode:stage2 /opt/ /opt/
+COPY --from=truongcx/cnode:stage2 /root/.cabal/bin/* /home/$NONEROOTUSER/.cabal/bin/
+COPY --from=truongcx/cnode:stage2 /lib/x86_64-linux-gnu/lib* /lib/x86_64-linux-gnu/
+COPY --from=truongcx/cnode:stage2 /lib64/ld-linux-x86-64* /lib64/
+COPY --from=truongcx/cnode:stage2 /usr/lib/x86_64-linux-gnu/libgmp.* /usr/lib/x86_64-linux-gnu/
+COPY --from=truongcx/cnode:stage2 /usr/lib/x86_64-linux-gnu/liblz4.* /usr/lib/x86_64-linux-gnu/
+COPY --from=truongcx/cnode:stage2 /usr/lib/x86_64-linux-gnu/libsodium.* /usr/lib/x86_64-linux-gnu/
+COPY --from=truongcx/cnode:stage2 /opt/ /opt/
 
 RUN sudo chmod a+x /home/$NONEROOTUSER/.cabal/bin/* && ls /opt/ 
 
