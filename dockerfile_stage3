@@ -108,6 +108,7 @@ RUN sudo curl -sL https://nixos.org/nix/install | sh \
     && echo "alias memory_alert=/home/$NONEROOTUSER/.scripts/memory_alert.sh" >> ~/.bashrc \
     && echo "alias peerIN_check=/home/$NONEROOTUSER/.scripts/peerIN_check.sh" >> ~/.bashrc \
     && echo "alias downG=/home/$NONEROOTUSER/.scripts/downG.sh" >> ~/.bashrc \
+    && echo "alias poolstatsUpdater=/home/$NONEROOTUSER/.scripts/poolstatsUpdater.sh" >> ~/.bashrc \
     && echo "export PATH=/nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/bin:/nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/sbin:/opt/cardano/cnode/scripts:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/home/$NONEROOTUSER/.cabal/bin"  >> ~/.bashrc
 
 # INSTALL DEPS  
@@ -136,6 +137,7 @@ ADD addfile/cleanCaches.sh /home/$NONEROOTUSER/.scripts/
 ADD addfile/clearlogs.sh /home/$NONEROOTUSER/.scripts/
 ADD addfile/memory_alert.sh /home/$NONEROOTUSER/.scripts/
 ADD addfile/peerIN_check.sh /home/$NONEROOTUSER/.scripts/
+ADD addfile/poolstatsUpdater.sh /home/$NONEROOTUSER/.scripts/
 ADD addfile/entrypoint.sh ./
 
 RUN sudo chown -R $NONEROOTUSER:$NONEROOTUSER $CNODE_HOME/* \
