@@ -34,7 +34,7 @@ MAILTO=""
 #@reboot sleep 5 && sudo ~/.scripts/.scripts/reboot_cli.sh
 #@reboot ~/.scripts/.scripts/start_all.sh
 #--: Delete iptables on startup
-@reboot sleep 15 && sudo /usr/sbin/iptables -F
+@reboot sleep 15 && sudo /sbin/iptables -F
 #
 #=== DAILY ===
 #22 5 * * *   ~/.scripts/cleanCaches.sh
@@ -54,6 +54,6 @@ MAILTO=""
 #
 #=== EVERY HOURS ===
 #--:Every 24th hour :At minute 10: Delete all iptable rule chain
-#10 */24 * * * sudo /usr/sbin/iptables -F
+#10 */24 * * * sudo /sbin/iptables -F
 #
 # Empty
