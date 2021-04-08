@@ -37,8 +37,8 @@ MAILTO=""
 @reboot sleep 15 && sudo /sbin/iptables -F
 #
 #=== DAILY ===
-#22 5 * * *   ~/.scripts/cleanCaches.sh
-#11 5 * * *   ~/..scripts/clearlogs.sh
+22 5 * * *   ~/.scripts/cleanCaches.sh
+11 5 * * *   ~/..scripts/clearlogs.sh
 #=== HOURLY ===
 #5 * * * *   /opt/cardano/cnode/scripts/topologyUpdater.sh
 #10 * * * *   /opt/cardano/cnode/scripts/poolstatsUpdater.sh
