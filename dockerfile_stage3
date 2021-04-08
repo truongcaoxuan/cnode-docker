@@ -103,6 +103,11 @@ RUN sudo curl -sL https://nixos.org/nix/install | sh \
     && echo "alias gLiveView=$CNODE_HOME/scripts/gLiveView.sh" >> ~/.bashrc \
     && echo "alias nodestart=/home/$NONEROOTUSER/.scripts/start_all.sh" >> ~/.bashrc \
     && echo "alias nodestop=/home/$NONEROOTUSER/.scripts/stop_all.sh" >> ~/.bashrc \
+    && echo "alias cleancaches=/home/$NONEROOTUSER/.scripts/cleanCaches.sh" >> ~/.bashrc \
+    && echo "alias clearlogs=/home/$NONEROOTUSER/.scripts/clearlogs.sh" >> ~/.bashrc \
+    && echo "alias memory_alert=/home/$NONEROOTUSER/.scripts/memory_alert.sh" >> ~/.bashrc \
+    && echo "alias peerIN_check=/home/$NONEROOTUSER/.scripts/peerIN_check.sh" >> ~/.bashrc \
+    && echo "alias downG=/home/$NONEROOTUSER/.scripts/downG.sh" >> ~/.bashrc \
     && echo "export PATH=/nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/bin:/nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/sbin:/opt/cardano/cnode/scripts:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/home/$NONEROOTUSER/.cabal/bin"  >> ~/.bashrc
 
 # INSTALL DEPS  
