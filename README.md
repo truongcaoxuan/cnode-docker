@@ -87,6 +87,8 @@ docker exec -ti CONTAINER /bin/bash
 
 docker attach CONTAINER
 
+docker commit CONTAINER  truongcx/cnode-commit
+
 **--Exit container**
 
 Ctrl-P /Ctrl-Q
