@@ -9,7 +9,8 @@ Availbles tools:
 -- cntools : gLiveView
 -- nodestart : nodestop
 -- cleancaches : clearlogs
--- memory_alert : peerIN_check : downG
+-- memory_alert : peerIN_check
+-- poolstatsUpdater : downG
 Available services:
 -- crontab
 -- node_exporter
