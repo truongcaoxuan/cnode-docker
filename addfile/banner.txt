@@ -6,8 +6,10 @@ __    __ __     __ __   (_)__
                          
 MENU
 Availbles tools:
-- cntools
-- gLiveView
+-- cntools : gLiveView
+-- nodestart : nodestop
+-- cleancaches : clearlogs
+-- memory_alert : peerIN_check : downG
 Available services:
-- crontab
-- node_exporter
+-- crontab
+-- node_exporter
