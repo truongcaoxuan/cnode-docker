@@ -61,7 +61,12 @@ RUN CBVERSION=$(cat cabal-version.txt) \
   && wget https://downloads.haskell.org/~cabal/cabal-install-$CBVERSION/cabal-install-$CBVERSION-x86_64-unknown-linux.tar.xz \
   && tar -xf cabal-install-$CBVERSION-x86_64-unknown-linux.tar.xz \
   && rm cabal-install-$CBVERSION-x86_64-unknown-linux.tar.xz cabal.sig \
-  && mv cabal ~/.cabal/bin/ \
+#  
+#  && wget https://downloads.haskell.org/~cabal/cabal-install-$CBVERSION/cabal-install-$CBVERSION-aarch64-ubuntu-18.04.tar.xz \
+#  && tar -xf cabal-install-$CBVERSION-aarch64-ubuntu-18.04.tar.xz \
+#  && rm cabal-install-$CBVERSION-aarch64-ubuntu-18.04.tar.xz cabal.sig \
+# 
+ && mv cabal ~/.cabal/bin/ \
 # && mv cabal /usr/local/bin/ \
   && ~/.cabal/bin/cabal update \
   && ~/.cabal/bin/cabal --version \
