@@ -26,7 +26,7 @@ WORKDIR /
 
 # PREREQ --no-install-recommends
 RUN apt-get update && apt-get install -y libcap2-bin ncurses-bin iproute2 curl wget apt-utils xz-utils netbase sudo coreutils dnsutils net-tools procps tcptraceroute bc \
-    && apt-get install -y telnet telnetd netcat nano zip unzip htop nload nmap iputils-ping \
+    && apt-get install -y telnet telnetd netcat nano zip unzip htop nload nmap iputils-ping iptables \
     && apt-get install -y --no-install-recommends cron \
     && sudo apt-get -y purge && sudo apt-get -y clean && sudo apt-get -y autoremove && sudo rm -rf /var/lib/apt/lists/* # && sudo rm -rf /usr/bin/apt*
     
