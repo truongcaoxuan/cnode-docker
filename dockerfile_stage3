@@ -119,14 +119,14 @@ RUN /nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/bin/nix-env -i python3 
     && sudo rm /nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/bin/nix-*
 
 # Install Prometheus Node Exporter
-ADD addfile/node-exporter-latest.txt ./
-RUN NEVERSION=$(cat node-exporter-latest.txt) \
-  && DIRNAME="node_exporter-$NEVERSION.linux-amd64" \
-  && wget https://github.com/prometheus/node_exporter/releases/download/v$NEVERSION/$DIRNAME.tar.gz \
-  && tar xvfz $DIRNAME.tar.gz \
-  && sudo mv $DIRNAME/node_exporter /usr/local/bin/ \
-  && rm -rf $DIRNAME.tar.gz \
-  && rm -rf $DIRNAME
+#ADD addfile/node-exporter-latest.txt ./
+#RUN NEVERSION=$(cat node-exporter-latest.txt) \
+#  && DIRNAME="node_exporter-$NEVERSION.linux-amd64" \
+#  && wget https://github.com/prometheus/node_exporter/releases/download/v$NEVERSION/$DIRNAME.tar.gz \
+#  && tar xvfz $DIRNAME.tar.gz \
+#  && sudo mv $DIRNAME/node_exporter /usr/local/bin/ \
+#  && rm -rf $DIRNAME.tar.gz \
+#  && rm -rf $DIRNAME
 
 # ADD SCRIPT
 ADD addfile/banner.txt /home/$NONEROOTUSER/.scripts/
@@ -145,12 +145,14 @@ RUN sudo chown -R $NONEROOTUSER:$NONEROOTUSER $CNODE_HOME/* \
     && sudo chmod a+x /home/$NONEROOTUSER/.scripts/*.sh /home/$NONEROOTUSER/entrypoint.sh
 
 # UPDATE DB
-#RUN cd /opt/cardano/cnode \
-#    && sudo /home/$NONEROOTUSER/.scripts/downG.sh 1Jyuh8tw7A4SVEP96TpdCV_HpR9ZUdZpC db_252.zip \
-#    && unzip db_252.zip \
-#    && sudo rm -rf db_252.zip
+RUN cd /opt/cardano/cnode \
+    && sudo /home/$NONEROOTUSER/.scripts/downG.sh 1Jyuh8tw7A4SVEP96TpdCV_HpR9ZUdZpC db_252.zip \
+    && unzip db_252.zip \
+    && sudo rm -rf db_252.zip
 
-# Expose NODE_PORT - Node Exporter - EKG-prometheus monitoring ports
-EXPOSE 6000 9100 12798 
+# Expose NODE_PORT & EKG-prometheus monitoring ports
+EXPOSE 6000 12798 
+# Expose Node Exporter 
+# EXPOSE 9100
 
 ENTRYPOINT ["./entrypoint.sh"]
