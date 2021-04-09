@@ -93,6 +93,10 @@ docker attach CONTAINER
 
 docker commit CONTAINER  truongcx/cnode-commit
 
+docker update --restart always CONTAINER
+
+docker inspect CONTAINER
+
 **--Exit container**
 
 Ctrl-P /Ctrl-Q
