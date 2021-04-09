@@ -31,22 +31,22 @@ MAILTO=""
 40 0 * * 1   sudo apt-get clean
 #
 #=== REBOOT ===#
-#@reboot sleep 5 && sudo ~/.scripts/.scripts/reboot_cli.sh
-#@reboot ~/.scripts/.scripts/start_all.sh
+#@reboot sleep 5 && sudo ~/.scripts/reboot_cli.sh
+#@reboot ~/.scripts/start_all.sh
 #--: Delete iptables on startup
 @reboot sleep 15 && sudo /sbin/iptables -F
 #
 #=== DAILY ===
 22 5 * * *   ~/.scripts/cleanCaches.sh
-11 5 * * *   ~/..scripts/clearlogs.sh
+11 5 * * *   ~/.scripts/clearlogs.sh
 #=== HOURLY ===
 #5 * * * *   /opt/cardano/cnode/scripts/topologyUpdater.sh
 #10 * * * *   /opt/cardano/cnode/scripts/poolstatsUpdater.sh
 #=== EVERY MINUTES ===
 #*/130 * * * * find /opt/cardano/cnode/logs/  -name "*.json" -type f -mtime +0 -type f -delete
 */35 * * * * history -c
-#*/55 * * * *   ~/..scripts/memory_alert.sh
-#*/20 * * * *   ~/..scripts/peerIN_check.sh
+#*/55 * * * *   ~/.scripts/memory_alert.sh
+#*/20 * * * *   ~/.scripts/peerIN_check.sh
 #
 #5 * * * *   ~/.scripts/.scripts/downG.sh
 #5 * * * *   ~/.scripts/.scripts/start_all.sh
