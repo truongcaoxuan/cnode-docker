@@ -60,17 +60,17 @@ docker tag IMAGE truongcx/cnode:stage3.0
 
 docker network create cardano-mainnet
 
-docker run -ti --privileged --rm --network=cardano-mainnet -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay1 truongcx/cnode:stage3.0
+docker run -ti --privileged --rm --network=cardano-mainnet -p 6000:6000 -p 12798:12798 -p 9091:9100 --name relay1 truongcx/cnode:stage3.0
 
-docker run -ti --privileged --rm --network=cardano-mainnet -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay2 truongcx/cnode-commit
+docker run -ti --privileged --rm --network=cardano-mainnet -p 6000:6000 -p 12798:12798 -p 9091:9100 --name relay1 truongcx/cnode-commit
 
 **RUNNING CONTAINER**
 
 docker network create cardano-mainnet
 
-docker run -dti --privileged --network=cardano-mainnet -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay1 truongcx/cnode:stage3.0
+docker run -dti --privileged --network=cardano-mainnet -p 6000:6000 -p 12798:12798 -p 9091:9100 --name relay1 truongcx/cnode:stage3.0
 
-docker run -dti --privileged --network=cardano-mainnet -p 6000:6000 -p 12798:12798 -p 9100:9100 --name relay2 truongcx/cnode-commit
+docker run -dti --privileged --network=cardano-mainnet -p 6000:6000 -p 12798:12798 -p 9091:9100 --name relay1 truongcx/cnode-commit
 
 
 # --Docker Images
