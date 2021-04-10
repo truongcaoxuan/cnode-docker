@@ -28,23 +28,21 @@ docker pull cardanocommunity/cardano-node:stage1
 
 **---- STEP2 ----**
 
-docker build --force-rm -t truongcx/cnode:stage2 -f dockerfile_stage2 .
+docker build --force-rm -t vnpip/cnode:stage2 -f dockerfile_stage2 .
 
 #docker tag IMAGE vnpip/cnode:stage2
 
 **---- STEP3 ----**
 
-**Build IMAGE have no db**
+**Build IMAGE (default have no db)**
 
-docker build --force-rm -t truongcx/cnode:stage3.0 -f dockerfile_stage3 .
+docker build --force-rm -t vnpip/cnode:stage3 -f dockerfile_stage3 .
 
-docker build --force-rm --build-arg=NONEROOTUSER=vnpip -t truongcx/cnode:stage3.0 -f dockerfile_stage3 .
+docker build --force-rm --build-arg=NONEROOTUSER=vnpip -t vnpip/cnode:stage3 -f dockerfile_stage3 .
 
-**Build IMAGE with db**
+**Commit IMAGE from Container with db sync**
 
-docker build --force-rm -t truongcx/cnode:stage3.1 -f dockerfile_stage3 .
-
-docker build --force-rm --build-arg=NONEROOTUSER=vnpip -t truongcx/cnode:stage3.1 -f dockerfile_stage3 .
+docker commit CONTAINER  truongcx/cnode-commit
 
 #============================================================
 
@@ -54,24 +52,23 @@ DOCKER BUILD CNODE : DONE!
 
 **--Tag IMAGE**
 
-docker tag IMAGE truongcx/cnode:stage3.0
+docker tag IMAGE vnpip/cnode:stage3
 
 **RUNNING TEST CONTAINER**
 
 docker network create cardano-mainnet
 
-docker run -ti --privileged --rm --network=cardano-mainnet -p 6000:6000 -p 12798:12798 --name relay1 truongcx/cnode:stage3.0
+docker run -ti --privileged --rm --network=cardano-mainnet -p 6000:6000 -p 12798:12798 --name relay1 vnpip/cnode:stage3
 
-docker run -ti --privileged --rm --network=cardano-mainnet -p 6000:6000 -p 12798:12798 --name relay1 truongcx/cnode-commit
+docker run -ti --privileged --rm --network=cardano-mainnet -p 6000:6000 -p 12798:12798 --name relay1 vnpip/cnode-commit
 
 **RUNNING CONTAINER**
 
 docker network create cardano-mainnet
 
-docker run -dti --privileged --network=cardano-mainnet --restart unless-stopped -p 6000:6000 -p 12798:12798 --name relay1 truongcx/cnode:stage3.0
+docker run -dti --privileged --network=cardano-mainnet --restart always -p 6000:6000 -p 12798:12798 --name relay1 vnpip/cnode:stage3
 
-docker run -dti --privileged --network=cardano-mainnet --restart unless-stopped -p 6000:6000 -p 12798:12798 --name relay1 truongcx/cnode-commit
-
+docker run -dti --privileged --network=cardano-mainnet --restart always -p 6000:6000 -p 12798:12798 --name relay1 vnpip/cnode-commit
 
 # --Docker Images
 
@@ -90,8 +87,6 @@ docker rm CONTAINER
 docker exec -ti CONTAINER /bin/bash
 
 docker attach CONTAINER
-
-docker commit CONTAINER  truongcx/cnode-commit
 
 docker update --restart always CONTAINER
 
@@ -121,29 +116,21 @@ docker login -u USER -p PASSWORD
 
 **--Tag Build Images to Docker Hub Tag**
 
-docker tag cardanocommunity/cardano-node:stage1 truongcx/cnode:stage1
-
-docker tag vnpip/cnode:stage2 truongcx/cnode:stage2
-
-docker tag vnpip/cnode:stage3.0 truongcx/cnode:stage3.0
-
-docker tag vnpip/cnode:stage3.1 truongcx/cnode:stage3.1
+docker tag cardanocommunity/cardano-node:stage1 vnpip/cnode:stage1
 
 **--Push Images to Docker Hub**
 
-docker push truongcx/cnode:stage1
+docker push vnpip/cnode:stage1
 
-docker push truongcx/cnode:stage2
+docker push vnpip/cnode:stage2
 
-docker push truongcx/cnode:stage3.0
+docker push vnpip/cnode:stage3.0
 
-docker push truongcx/cnode:stage3.1
-
-docker push truongcx/cnode-commit
+docker push vnpip/cnode-commit
 
 # --Source Docker Hub
 
-https://hub.docker.com/r/truongcx/cnode
+https://hub.docker.com/r/vnpip/cnode
 
 https://hub.docker.com/r/cardanocommunity/cardano-node
 
