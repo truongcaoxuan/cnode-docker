@@ -29,6 +29,9 @@ sudo /usr/sbin/inetd start > /dev/null 2>&1
 #-- run node exporter
 #/usr/bin/nohup /usr/local/bin/node_exporter --web.listen-address="0.0.0.0:9100" > /dev/null 2>&1 &
 
+#-- sendmytip
+#/usr/bin/nohup ~/.scripts/sendmytip.sh > /dev/null 2>&1 &
+
 # blin EKG Prometheus
 find /opt/cardano/cnode -name "*config*.json" -print0 | xargs -0 sed -i 's/127.0.0.1/0.0.0.0/g' 2> /dev/null 
 
