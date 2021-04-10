@@ -82,11 +82,10 @@ RUN sudo chmod a+x /home/$NONEROOTUSER/.cabal/bin/* && ls /opt/
 
 # Setup running cron job
 # -- Add crontab file in the cron directory
-# ADD  ./addfile/cronjob /etc/cron.d/cronjob
-COPY addfile/cronjob /etc/cron.d/cronjob
+ADD addfile/crontab /etc/cron.d/crontab
 # -- Give execution rights on the cron job
-RUN sudo chmod 0644 /etc/cron.d/cronjob \
-    && crontab /etc/cron.d/cronjob
+RUN sudo chmod 0644 /etc/cron.d/crontab \
+    && crontab /etc/cron.d/crontab
 # -- Create the log file to be able to run tail
 RUN sudo touch /var/log/cron.log
 
