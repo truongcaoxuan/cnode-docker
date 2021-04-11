@@ -152,8 +152,6 @@ docker push vnpip/cnode-commit
 
 11 2 * * * docker exec relay1 /home/vnpip/.scripts/clearlogs.sh
 
-22 5 * * * docker exec relay1 /home/vnpip/.scripts/cleanCaches.sh
-
 #---------------------------------------------------------------
 
 5 * * * * docker exec relay1 /opt/cardano/cnode/scripts/topologyUpdater.sh 
