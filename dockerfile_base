@@ -4,7 +4,7 @@
 # FROM vnpip/cnode:stage2 AS build
 # FROM cardanocommunity/cardano-node:stage2 AS build
 
-FROM ubuntu:20.04 AS build
+FROM debian:latest AS build
 
 LABEL maintainer="VNPIPS Staking Team (ada.vnpips.com)"
 
@@ -94,30 +94,6 @@ RUN cd /usr/bin \
 && sudo wget http://www.vdberg.org/~richard/tcpping \
 && sudo chmod 755 tcpping
 
-# INSTALL NIX
-RUN sudo curl -sL https://nixos.org/nix/install | sh \
-    && sudo ln -s /nix/var/nix/profiles/per-user/etc/profile.d/nix.sh /etc/profile.d/ \
-    && . /home/$NONEROOTUSER/.nix-profile/etc/profile.d/nix.sh \
-    && sudo crontab -u $NONEROOTUSER /etc/cron.d/crontab \
-    && echo "alias cntools=$CNODE_HOME/scripts/cntools.sh" >> ~/.bashrc \
-    && echo "alias gLiveView=$CNODE_HOME/scripts/gLiveView.sh" >> ~/.bashrc \
-    && echo "alias nodestart=/home/$NONEROOTUSER/.scripts/start_all.sh" >> ~/.bashrc \
-    && echo "alias nodestop=/home/$NONEROOTUSER/.scripts/stop_all.sh" >> ~/.bashrc \
-    && echo "alias cleancaches=/home/$NONEROOTUSER/.scripts/cleanCaches.sh" >> ~/.bashrc \
-    && echo "alias clearlogs=/home/$NONEROOTUSER/.scripts/clearlogs.sh" >> ~/.bashrc \
-    && echo "alias memory_alert=/home/$NONEROOTUSER/.scripts/memory_alert.sh" >> ~/.bashrc \
-    && echo "alias peerIN_check=/home/$NONEROOTUSER/.scripts/peerIN_check.sh" >> ~/.bashrc \
-    && echo "alias downG=/home/$NONEROOTUSER/.scripts/downG.sh" >> ~/.bashrc \
-    && echo "alias poolstatsUpdater=/home/$NONEROOTUSER/.scripts/poolstatsUpdater.sh" >> ~/.bashrc \
-    && echo "export PATH=/nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/bin:/nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/sbin:/opt/cardano/cnode/scripts:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/home/$NONEROOTUSER/.cabal/bin"  >> ~/.bashrc
-
-# INSTALL DEPS  
-RUN /nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/bin/nix-env -i python3 systemd libsodium tmux jq ncurses libtool autoconf git wget gnupg column less openssl vim \
-    && /nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/bin/nix-channel --update \
-    && /nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/bin/nix-env -u --always \
-    && /nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/bin/nix-collect-garbage -d \
-    && sudo rm /nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/bin/nix-*
-
 # ADD SCRIPT
 ADD addfile/banner.txt /home/$NONEROOTUSER/.scripts/
 ADD addfile/downG.sh /home/$NONEROOTUSER/.scripts/
@@ -134,6 +110,11 @@ ADD addfile/entrypoint.sh ./
 RUN sudo chown -R $NONEROOTUSER:$NONEROOTUSER $CNODE_HOME/* \
     && sudo chown -R $NONEROOTUSER:$NONEROOTUSER /home/$NONEROOTUSER/.* \
     && sudo chmod a+x /home/$NONEROOTUSER/.scripts/*.sh /home/$NONEROOTUSER/entrypoint.sh
+
+RUN cd /home/$NONEROOTUSER/.scripts/ \
+&& curl -sS -o prereqs.sh https://raw.githubusercontent.com/cardano-community/guild-operators/master/scripts/cnode-helper-scripts/prereqs.sh \
+&& chmod 700 prereqs.sh \ 
+&& ./prereqs.sh -c -l
 
 # UPDATE DB
 #RUN cd /opt/cardano/cnode \
