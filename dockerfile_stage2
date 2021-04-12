@@ -58,14 +58,12 @@ RUN GHCVERSION=$(cat ghc-version.txt) \
 # Install [cabal]
 ADD addfile/cabal-version.txt ./ 
 RUN CBVERSION=$(cat cabal-version.txt) \
-  && wget https://downloads.haskell.org/~cabal/cabal-install-$CBVERSION/cabal-install-$CBVERSION-x86_64-unknown-linux.tar.xz \
-  && tar -xf cabal-install-$CBVERSION-x86_64-unknown-linux.tar.xz \
-  && rm cabal-install-$CBVERSION-x86_64-unknown-linux.tar.xz cabal.sig \
-#  
-#  && wget https://downloads.haskell.org/~cabal/cabal-install-$CBVERSION/cabal-install-$CBVERSION-aarch64-ubuntu-18.04.tar.xz \
-#  && tar -xf cabal-install-$CBVERSION-aarch64-ubuntu-18.04.tar.xz \
-#  && rm cabal-install-$CBVERSION-aarch64-ubuntu-18.04.tar.xz cabal.sig \
-# 
+#  && wget https://downloads.haskell.org/~cabal/cabal-install-$CBVERSION/cabal-install-$CBVERSION-x86_64-unknown-linux.tar.xz \
+#  && tar -xf cabal-install-$CBVERSION-x86_64-unknown-linux.tar.xz \
+#  && rm cabal-install-$CBVERSION-x86_64-unknown-linux.tar.xz cabal.sig \
+  && wget https://downloads.haskell.org/~cabal/cabal-install-$CBVERSION/cabal-install-$CBVERSION-x86_64-ubuntu-16.04.tar.xz \
+  && tar -xf cabal-install-$CBVERSION-x86_64-ubuntu-16.04.tar.xz \
+  && rm cabal-install-$CBVERSION-x86_64-ubuntu-16.04.tar.xz \ 
  && mv cabal ~/.cabal/bin/ \
 # && mv cabal /usr/local/bin/ \
   && ~/.cabal/bin/cabal update \
