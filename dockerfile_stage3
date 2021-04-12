@@ -36,7 +36,7 @@ RUN apt-get update \
 RUN  apt-get update && apt-get install --no-install-recommends -y locales
 
 # Install ghcup package
-RUN  curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+# RUN  curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 
 #  en_US.UTF-8 for inclusion in generation
 RUN sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen \
