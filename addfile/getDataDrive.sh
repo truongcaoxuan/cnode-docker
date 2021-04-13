@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ $# != 2 ]; then
-   echo "Usage: downG.sh ID save_name"
+   echo "Usage: getDataDrive.sh ID save_name"
    exit 0
 fi
 #fileid="1auBOPyiooV-0FrOc7GIAAMonFpMXjZMP"
