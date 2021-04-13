@@ -111,7 +111,7 @@ RUN sudo curl -sL https://nixos.org/nix/install | sh \
     && echo "alias clearlogs=/home/$NONEROOTUSER/.scripts/clearlogs.sh" >> ~/.bashrc \
     && echo "alias memory_alert=/home/$NONEROOTUSER/.scripts/memory_alert.sh" >> ~/.bashrc \
     && echo "alias peerIN_check=/home/$NONEROOTUSER/.scripts/peerIN_check.sh" >> ~/.bashrc \
-    && echo "alias downG=/home/$NONEROOTUSER/.scripts/downG.sh" >> ~/.bashrc \
+    && echo "alias getDataDrive=/home/$NONEROOTUSER/.scripts/getDataDrive.sh" >> ~/.bashrc \
     && echo "alias poolstatsUpdater=/home/$NONEROOTUSER/.scripts/poolstatsUpdater.sh" >> ~/.bashrc \
     && echo "export PATH=/nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/bin:/nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/sbin:/opt/cardano/cnode/scripts:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/home/$NONEROOTUSER/.cabal/bin"  >> ~/.bashrc
 
@@ -134,7 +134,7 @@ RUN /nix/var/nix/profiles/per-user/$NONEROOTUSER/profile/bin/nix-env -i python3 
 
 # ADD SCRIPT
 ADD addfile/banner.txt /home/$NONEROOTUSER/.scripts/
-ADD addfile/downG.sh /home/$NONEROOTUSER/.scripts/
+ADD addfile/getDataDrive.sh /home/$NONEROOTUSER/.scripts/
 ADD addfile/start_all.sh /home/$NONEROOTUSER/.scripts/
 ADD addfile/stop_all.sh /home/$NONEROOTUSER/.scripts/
 ADD addfile/cleanCaches.sh /home/$NONEROOTUSER/.scripts/
@@ -151,9 +151,9 @@ RUN sudo chown -R $NONEROOTUSER:$NONEROOTUSER $CNODE_HOME/* \
 
 # UPDATE DB
 #RUN cd /opt/cardano/cnode \
-#    && sudo /home/$NONEROOTUSER/.scripts/downG.sh 1Jyuh8tw7A4SVEP96TpdCV_HpR9ZUdZpC db_252.zip \
-#    && unzip db_252.zip \
-#    && sudo rm -rf db_252.zip
+#    && sudo /home/$NONEROOTUSER/.scripts/getDataDrive.sh 1O_vA-_AgYpgpN5JVBrhLsFiN6LajLYzF db.zip \
+#    && unzip db.zip \
+#    && sudo rm -rf db.zip
 
 # Expose NODE_PORT & EKG-prometheus monitoring ports
 EXPOSE 6000 12798 
