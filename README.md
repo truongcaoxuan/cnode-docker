@@ -127,6 +127,7 @@ docker push vnpip/cnode:stage2
 docker push vnpip/cnode:stage3.0
 
 docker push vnpip/cnode-commit
+
 **--Clear the logs**
 
 sudo sh -c "truncate -s 0 /var/lib/docker/containers/*/*-json.log"
