@@ -128,18 +128,6 @@ docker push vnpip/cnode:stage3.0
 
 docker push vnpip/cnode-commit
 
-**--Clear the logs**
-
-sudo sh -c "truncate -s 0 /var/lib/docker/containers/'*'/'*'-json.log"
-
-#To get the size of the logs
-
-sudo sh -c "du -ch /var/lib/docker/containers/'*'/'*'-json.log"
-
-#To only get the total of the size of the logs
-
-sudo sh -c "du -ch /var/lib/docker/containers/'*'/'*'-json.log | grep total"
-
 **VM/ Host crontab**
 
 #== WEKKLY ===
