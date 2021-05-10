@@ -170,9 +170,15 @@ sudo sh -c "du -ch /var/lib/docker/containers/*/*-json.log | grep total"
 
 #---------------------------------------------------------------
 
+17 2 * * * sudo sh -c "du -ch /var/lib/docker/containers//-json.log"
+
+#---------------------------------------------------------------
+
 */20 * * * * docker exec relay1 /home/vnpip/.scripts/peerIN_check.sh 
 
 10 */24 * * * docker exec relay1 sudo /usr/sbin/iptables -F
+
+
 
 # --Source Docker Hub
 
