@@ -124,7 +124,7 @@ docker push vnpip/cnode:stage1
 
 docker push vnpip/cnode:stage2
 
-docker push vnpip/cnode:stage3.0
+docker push vnpip/cnode:stage3
 
 docker push vnpip/cnode-commit
 
