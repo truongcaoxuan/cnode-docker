@@ -29,6 +29,7 @@ MAILTO=""
 30 0 * * 1   sudo apt autoremove
 #--: At 00:40 on Monday
 40 0 * * 1   sudo apt-get clean
+50 0 * * 1   sudo sh -c "truncate -s 0 /var/lib/docker/containers/*/*-json.log"
 #
 #=== REBOOT ===#
 #@reboot sleep 5 && sudo ~/.scripts/reboot_cli.sh
