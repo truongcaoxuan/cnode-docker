@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ $# != 2 ]; then
-   echo "Usage: getDataDrive.sh file_id file_name"
+   echo "Usage: ~/.scripts/getDataDrive.sh file_id file_name"
    exit 0
 fi
 #-- db epoch 265
